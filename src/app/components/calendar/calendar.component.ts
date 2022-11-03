@@ -3,10 +3,12 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { TaskCreationModalComponent } from '../task-creation-modal/task-creation-modal.component';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import * as AppActions from '../../store/app.actions';
-import { Store } from '@ngrx/store';
+import { Store, Action } from '@ngrx/store';
 import { getTaskFilteredSelector, getUserSelector } from 'src/app/store/app.selector';
 import { UserI } from '../../interfaces/user.interface';
 import { TaskI, TaskType } from '../../interfaces/task.interface';
+import { Actions, ofType } from '@ngrx/effects';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-calendar',
@@ -39,7 +41,7 @@ export class CalendarComponent implements OnInit {
   alltaskMonth$ = new Observable<TaskI[]>();
   currentUserId: number = 0;
 
-  constructor(private dialog: MatDialog, private store: Store) {
+  constructor(private dialog: MatDialog, private store: Store, private actions$: Actions) {
     this.currentUser$ = this.store.select(getUserSelector);
     this.alltaskMonth$ = this.store.select(getTaskFilteredSelector);
   }
@@ -53,12 +55,6 @@ export class CalendarComponent implements OnInit {
       if(user && user.id) {
         this.currentUserId = user.id;
       }
-    })
-
-    this.alltaskMonth$.subscribe((tasks) => {
-        if(tasks) {
-          console.log(tasks)
-        }
     })
   }
 
@@ -83,8 +79,6 @@ export class CalendarComponent implements OnInit {
         this.store.dispatch(AppActions.createTask({task: form}))
       }
     });
-
-    this.getTasksForMonth();
   }
 
   onNextMonth() {
