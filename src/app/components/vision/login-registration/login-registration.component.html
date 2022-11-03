@@ -1,0 +1,32 @@
+<div class="modal">
+
+    <h3>{{mode === 'LOGIN' ? 'Login in your account' : 'Register a new account'}}</h3>
+
+<form [formGroup]="loginRegistrationForm">
+    <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username"/>
+      </mat-form-field>
+       
+       <mat-form-field appearance="fill">
+        <mat-label>FullName</mat-label>
+        <input matInput  formControlName="fullName"/>
+      </mat-form-field>
+
+       <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput  formControlName="password"/>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput  formControlName="email"/>
+      </mat-form-field>
+</form>
+
+<div class="buttons">
+    <button (click)="onCancel()">Cancel</button>
+    <button (click)="onSubmit()">{{mode === 'LOGIN' ? 'login' : 'register'}}</button>
+</div>
+
+</div>

@@ -1,0 +1,43 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  html,
+  body {
+    font-family: sans-serif;
+    background-color: #d2c3be;
+    margin: 0;
+    background-image: url("./assets/img/wave.svg");
+    background-repeat: repeat-x;
+  }
+  
+  h1 {
+    margin: 0;
+    font-family: "Dancing Script"!important;
+    font-weight: 400!important;
+    font-size: 80px!important;
+    line-height: 96px!important;
+    text-align: center!important;
+  }
+  
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-dialog-container {
+  background: #D2C3BE!important;
+  color: #000;
+}
+
+.mat-form-field-label {
+  color: #000;
+}
+
+.mat-icon-button {
+  color: #000;
+}
+
+.mat-dialog-container {
+  padding: 6%!important;
+}

@@ -1,0 +1,27 @@
+.content {
+    margin: 7% 0;
+    display: flex;
+    justify-content: center;
+    flex: 1 1 auto;
+    min-height: 0;
+  }
+  
+  .content div {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  button {
+    padding: 2% 5%;
+    background-color: transparent;
+    border-radius: 15px;
+    cursor: pointer;
+  }
+  
+  p {
+    padding: 10%;
+  }
+  

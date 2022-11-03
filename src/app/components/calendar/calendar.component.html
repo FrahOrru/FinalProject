@@ -1,0 +1,22 @@
+<h1>Your Calendar</h1>
+
+<div class="month-switcher">
+    <img src="../../assets/img/arrow.png" alt="previous" class="previous" (click)="onPrevMonth()">
+    <h2>{{ date | date:'MMMM YYYY'}}</h2>
+    <img src="../../assets/img/arrow.png" alt="next" class="next" (click)="onNextMonth()">
+</div>
+
+<table>
+    <tr>
+        <th>Mo</th>
+        <th>Tu</th>
+        <th>We</th>
+        <th>Th</th>
+        <th>Fr</th>
+        <th>Sa</th>
+        <th>Su</th>
+    </tr>
+    <tr *ngFor="let week of calendarcells2.value">
+        <td *ngFor="let day of week" (click)="onDateClicked()">{{day}}</td>
+    </tr>
+</table>

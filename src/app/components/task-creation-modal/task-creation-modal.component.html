@@ -1,0 +1,34 @@
+<div class="modal">
+
+    <h3>Create a new task</h3>
+
+<form [formGroup]="taskCreationForm">
+    <mat-form-field appearance="fill">
+        <mat-label>Title</mat-label>
+        <input matInput formControlName="title"/>
+      </mat-form-field>
+    
+      <mat-form-field appearance="fill">
+        <mat-label>Date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="time"/>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+       
+       <mat-form-field appearance="fill">
+        <mat-label>Location</mat-label>
+        <input matInput  formControlName="position"/>
+      </mat-form-field>
+
+       <mat-form-field appearance="fill">
+        <mat-label>Description</mat-label>
+        <input matInput  formControlName="description"/>
+      </mat-form-field>
+</form>
+
+<div class="buttons">
+    <button (click)="onCancel()">Cancel</button>
+    <button (click)="onSubmit()">Create</button>
+</div>
+
+</div>

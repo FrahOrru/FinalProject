@@ -1,0 +1,19 @@
+h2 {
+    position: absolute;
+    left: -15%;
+    top: 46%;
+    transform: rotate(-90deg);
+    font-family: "Dancing Script";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 60px;
+    margin: 0;
+  }
+  
+  @media only screen and (max-width: 600px) {
+    h2 {
+      display: none;
+    }
+  }
+  

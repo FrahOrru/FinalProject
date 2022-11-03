@@ -1,0 +1,72 @@
+.task {
+    width: 60%;
+    margin: 3% auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.left-section {
+    background-color: #DAAB96;
+    padding: 0 10%;
+    height: 250px;
+    border-radius: 10px 0 0 10px;
+    display: flex;
+    align-items: center;
+}
+
+.task-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 60%;
+    text-align: center;
+    background-color: #EDD3C6;
+    height: 250px;
+    border-radius: 0 10px 10px 0;
+}
+
+h3 {
+    font-family: "Dancing Script";
+    font-weight: 400;
+    font-size: 30px;
+    margin-bottom: 5%;
+}
+
+p {
+    font-family: "Dancing Script";
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.time {
+    margin-top: 2%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 5%;
+}
+
+.time img {
+    width: 25px;
+}
+
+.time p {
+    font-size: 16px;
+}
+
+.location {
+    margin-top: 2%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 5%;
+}
+.location img {
+    width: 25px;
+}
+
+h1 {
+    padding-top: 10%;
+}

@@ -1,0 +1,35 @@
+form {
+    width: 50%
+}
+
+h3 {
+    font-family: "Dancing Script";
+    font-weight: 400;
+    font-size: 30px;
+}
+
+.modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.buttons {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
+button {
+    cursor: pointer;
+    padding: 2% 4%;
+    margin: 0 2%;
+    background-color: transparent;
+    border: 1px solid #000;
+    border-radius: 10px;
+}
