@@ -22,8 +22,8 @@ export const deleteUserSuccess = createAction('[USER] delete user Success');
 export const deleteUserFailed = createAction('[USER] delete user Failed');
 
 export const getAllUsers = createAction('[USER] get all user');
-export const getAllUsersSuccess = createAction('[USER] get all user', props<{ users: UserI[]}>());
-export const getAllUsersFailed = createAction('[USER] get all user');
+export const getAllUsersSuccess = createAction('[USER] get all user success', props<{ users: UserI[]}>());
+export const getAllUsersFailed = createAction('[USER] get all user failed');
 
 export const getAllTaskFilter = createAction('[TASK] get all task', props<{ filter: any }>());
 export const getAllTaskFilterSuccess = createAction('[TASK] get all task Success', props<{ task: TaskI[] }>());

@@ -43,4 +43,11 @@ export class DesktopSetupComponent implements OnInit {
 
   onCupClick(target: any) {
   }
+
+  onCalendarClick(){
+    const tl =  gsap.timeline();
+
+    tl.to(".calendar", { x: 50, y: -50, duration: 0.8 });
+    tl.to(".calendar", { x: 0, y: 0, duration: 0.8 });
+  }
 }

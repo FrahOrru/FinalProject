@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, ofType, createEffect} from '@ngrx/effects';
 import { of } from 'rxjs';
-import { catchError, map, mergeMap } from 'rxjs/operators';
+import { catchError, map, switchMap } from 'rxjs/operators';
 import { AppService } from '../app.service';
 import * as AppAction from './app.actions'
  
@@ -11,7 +11,7 @@ export class AppEffects {
   getAllUsers$ = createEffect(() => this.actions$
   .pipe(
     ofType(AppAction.getAllUsers),
-    mergeMap(() => this.appService.getAllUser()
+    switchMap(() => this.appService.getAllUser()
       .pipe(
         map((users: any) => (AppAction.getAllUsersSuccess({users: users}))),
         catchError(() => of(AppAction.getAllUsersFailed()))
@@ -20,7 +20,7 @@ export class AppEffects {
   createUser$ = createEffect(() => this.actions$
   .pipe(
     ofType(AppAction.createUser),
-    mergeMap(({user}) => this.appService.createUser({
+    switchMap(({user}) => this.appService.createUser({
       ...user
     })
       .pipe(
