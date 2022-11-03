@@ -24,8 +24,19 @@ export class AppEffects {
       ...user
     })
       .pipe(
-        map((users: any) => (AppAction.createUserSuccess())),
+        map(() => (AppAction.createUserSuccess())),
         catchError(() => of(AppAction.createUserFailed()))
+      ))));
+
+  createTask$ = createEffect(() => this.actions$
+  .pipe(
+    ofType(AppAction.createTask),
+    switchMap(({task}) => this.appService.createTask({
+      ...task
+    })
+      .pipe(
+        map(() => (AppAction.createTaskSuccess())),
+        catchError(() => of(AppAction.createTaskFailed()))
       ))));
 
   constructor(

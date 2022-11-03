@@ -16,7 +16,7 @@ export interface TaskI {
     type: TaskType;
 }
 
-enum TaskType {
+export enum TaskType {
     FITNESS = 'FITNESS',
     APPOINTMENT = 'APPOINTMENT',
     FOOD = 'APPOINTMENT',

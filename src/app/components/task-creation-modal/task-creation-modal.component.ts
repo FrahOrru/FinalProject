@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-task-creation-modal',
@@ -11,13 +11,16 @@ export class TaskCreationModalComponent implements OnInit {
 
   taskCreationForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private dialogRef: MatDialogRef<TaskCreationModalComponent>) {
+  constructor(private formBuilder: FormBuilder, private dialogRef: MatDialogRef<TaskCreationModalComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: { isLogedIn: boolean},) {
+
     this.taskCreationForm = this.formBuilder.group({
       title: [''],
       time: [new Date()],
       position: [''],
       description: [''],
     });
+    
   }
 
   ngOnInit(): void {
@@ -25,6 +28,7 @@ export class TaskCreationModalComponent implements OnInit {
   }
 
   onSubmit() {
+    this.dialogRef.close({form: this.taskCreationForm});
   }
 
   onCancel() {

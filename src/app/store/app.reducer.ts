@@ -28,7 +28,7 @@ export const initialState: State = {
     on(AppActions.getUserSuccess, (state, {user}) => ({ ...state, selectedUser: user})),
     on(AppActions.getUserFailed, state => ({ ...state, selectedUser: {} as UserI})),
 
-    on(AppActions.createUser, state => ({ ...state})),
+    on(AppActions.createUser, state => ({ ...state,})),
     on(AppActions.createUserSuccess, state => ({ ...state})),
     on(AppActions.createUserFailed, state => ({ ...state})),
 
@@ -51,6 +51,10 @@ export const initialState: State = {
     on(AppActions.getTask, state => ({ ...state, selectedTask: {} as TaskI})),
     on(AppActions.getTaskSuccess, (state, {task}) => ({ ...state, selectedTask: task})),
     on(AppActions.getTaskFailed, state => ({ ...state,selectedTask: {} as TaskI})),
+
+    on(AppActions.createTask, state => ({ ...state})),
+    on(AppActions.createTaskSuccess, state => ({ ...state})),
+    on(AppActions.createTaskFailed, state => ({ ...state})),
 
     on(AppActions.editTask, state => ({ ...state})),
     on(AppActions.editTaskSuccess, state => ({ ...state})),

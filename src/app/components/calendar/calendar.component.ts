@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { TaskCreationModalComponent } from '../task-creation-modal/task-creation-modal.component';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import * as AppActions from '../../store/app.actions';
+import { Store } from '@ngrx/store';
+import { getTaskFilteredSelector, getUserSelector } from 'src/app/store/app.selector';
+import { UserI } from '../../interfaces/user.interface';
+import { TaskI, TaskType } from '../../interfaces/task.interface';
 
 @Component({
   selector: 'app-calendar',
@@ -30,22 +35,56 @@ export class CalendarComponent implements OnInit {
 
   calendarcells2 = new BehaviorSubject(this.calendarCells);
 
-  constructor(private dialog: MatDialog) { }
+  currentUser$ = new Observable<UserI>();
+  alltaskMonth$ = new Observable<TaskI[]>();
+  currentUserId: number = 0;
+
+  constructor(private dialog: MatDialog, private store: Store) {
+    this.currentUser$ = this.store.select(getUserSelector);
+    this.alltaskMonth$ = this.store.select(getTaskFilteredSelector);
+  }
 
   ngOnInit(): void {
+    this.getTasksForMonth();
     this.getDaysInMonth(this.year, this.month)
     this.getWeeks();
+
+    this.currentUser$.subscribe((user: UserI) => {
+      if(user && user.id) {
+        this.currentUserId = user.id;
+      }
+    })
+
+    this.alltaskMonth$.subscribe((tasks) => {
+        if(tasks) {
+          console.log(tasks)
+        }
+    })
   }
 
   onDateClicked() {
     let dialogRef = this.dialog.open(TaskCreationModalComponent, {
       height: '450px',
       width: '600px',
+      data: {
+        isLogedIn: this.currentUserId !== 0 ? true : false 
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed with result ', result);
+      if(result) {
+        let form = {
+          userId: 1,
+          type: TaskType.APPOINTMENT,
+          ...result.form.value
+        } as TaskI
+
+
+        this.store.dispatch(AppActions.createTask({task: form}))
+      }
     });
+
+    this.getTasksForMonth();
   }
 
   onNextMonth() {
@@ -101,12 +140,20 @@ export class CalendarComponent implements OnInit {
       this.fullCalendarCells.push("");
     }
 
-    console.log(this.fullCalendarCells.length)
-
     for(let i = 0; i <= this.fullCalendarCells.length; i += 7) {
       this.calendarCells.push(this.fullCalendarCells.slice(i, i + 7))
     }
 
     this.calendarcells2.next(this.calendarCells);
+  }
+
+  getTasksForMonth() {
+    this.store.dispatch(AppActions.getAllTaskFilter({
+      filter: { 
+         userId: 1,
+         dateFrom: new Date(this.month, this.year, 0),
+         dateTo: new Date(this.month + 1, this.year, 0)
+       }
+     }));
   }
 }

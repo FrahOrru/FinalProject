@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store'
 import { Observable } from 'rxjs';
 import * as AppActions from './store/app.actions'
+import * as AOS from 'aos'
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,7 @@ export class AppComponent implements OnInit{
   constructor(private store: Store){}
 
   ngOnInit(): void {
-    this.store.dispatch(AppActions.getAllUsers());
+    AOS.init();
   }
   tasks = [
     {},
@@ -20,5 +21,8 @@ export class AppComponent implements OnInit{
   ]
   title = 'FinalProject';
 
-  
+  isEven(n: number) {
+    n = Number(n);
+    return n === 0 || !!(n && !(n%2));
+  }
 }

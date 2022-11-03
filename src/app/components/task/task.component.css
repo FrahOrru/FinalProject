@@ -31,7 +31,7 @@ h3 {
     font-family: "Dancing Script";
     font-weight: 400;
     font-size: 30px;
-    margin-bottom: 5%;
+    margin-bottom: 3%;
 }
 
 p {
@@ -45,7 +45,7 @@ p {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-bottom: 5%;
+    margin-bottom: 3%;
 }
 
 .time img {
@@ -61,7 +61,7 @@ p {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-bottom: 5%;
+    margin-bottom: 3%;
 }
 .location img {
     width: 25px;
@@ -69,4 +69,11 @@ p {
 
 h1 {
     padding-top: 10%;
+}
+
+.edit {
+    width: 30px;
+    height: 30px;
+    align-self: end;
+    padding: 10px;
 }

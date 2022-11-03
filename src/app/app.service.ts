@@ -23,11 +23,14 @@ import { HttpClient } from '@angular/common/http'
     }
 
     getTask(id: number) {
-      console.log(this.http.get(this.baseUrl + '/tasks/' + id))
         return this.http.get(this.baseUrl + '/tasks/' + id);
     }
 
     createUser(body: any) {
       return this.http.post(this.baseUrl + '/users', body);
+    }
+
+    createTask(body: any) {
+      return this.http.post(this.baseUrl + '/tasks', body);
     }
   }

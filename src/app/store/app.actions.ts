@@ -33,6 +33,10 @@ export const getTask = createAction('[TASK] get Task', props<{ id: number }>());
 export const getTaskSuccess = createAction('[TASK] get Task success', props<{ task: TaskI }>());
 export const getTaskFailed = createAction('[TASK] get Task failed');
 
+export const createTask = createAction('[USER] create Task', props<{ task: TaskI }>());
+export const createTaskSuccess = createAction('[USER] create Task success');
+export const createTaskFailed = createAction('[USER] create Task failed');
+
 export const editTask = createAction('[TASK] edit Task', props<{ user: UserI }>());
 export const editTaskSuccess = createAction('[TASK] edit Task Success');
 export const editTaskFailed = createAction('[TASK] edit Task Failed');

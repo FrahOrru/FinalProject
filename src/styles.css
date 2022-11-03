@@ -41,3 +41,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mat-dialog-container {
   padding: 6%!important;
 }
+.mat-dialog-container {
+  display: flex!important;
+  align-items: center!important;
+  justify-content: center!important;
+}
+
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 35px!important;
+  }
+}

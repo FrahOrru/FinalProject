@@ -17,6 +17,8 @@
         <th>Su</th>
     </tr>
     <tr *ngFor="let week of calendarcells2.value">
-        <td *ngFor="let day of week" (click)="onDateClicked()">{{day}}</td>
+        <td *ngFor="let day of week" (click)="onDateClicked()">
+            {{day}}
+        </td>
     </tr>
 </table>

@@ -32,4 +32,8 @@ export class LoginRegistrationComponent implements OnInit {
   onSubmit(){
     this.dialogRef.close({form: this.loginRegistrationForm})
   }
+
+  onSwitchMode() {
+    this.mode === 'LOGIN' ? this.mode = 'REGISTRATION' : this.mode = 'LOGIN';
+  }
 }

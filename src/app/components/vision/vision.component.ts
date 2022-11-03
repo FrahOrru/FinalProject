@@ -3,6 +3,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { LoginRegistrationComponent } from './login-registration/login-registration.component';
 import { Store } from '@ngrx/store';
 import * as AppActions from '../../store/app.actions';
+import { getUserSelector } from 'src/app/store/app.selector';
+import { UserI } from '../../interfaces/user.interface';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-vision',
@@ -10,8 +13,11 @@ import * as AppActions from '../../store/app.actions';
   styleUrls: ['./vision.component.css']
 })
 export class VisionComponent implements OnInit {
+  currentUser$ = new Observable<UserI>();
 
-  constructor(private dialog: MatDialog, private store: Store) { }
+  constructor(private dialog: MatDialog, private store: Store) {
+    this.currentUser$ = this.store.select(getUserSelector);
+  }
 
   ngOnInit(): void {
   }
@@ -24,7 +30,9 @@ export class VisionComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if(result) {
-        this.store.dispatch(AppActions.createUser({...result.value}))
+        const user: UserI = {...result.form.value};
+
+        this.store.dispatch(AppActions.createUser({user}))
       }
     });
   }

@@ -33,3 +33,9 @@ button {
     border: 1px solid #000;
     border-radius: 10px;
 }
+
+.modeChanger {
+    width: 100%;
+    margin: 0;
+    text-decoration: underline;
+}
